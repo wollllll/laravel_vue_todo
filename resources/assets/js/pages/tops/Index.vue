@@ -1,46 +1,27 @@
 <template>
-    <Moveable
-        class="moveable"
-        v-bind="moveable"
-        @drag="handleDrag"
-        @resize="handleResize"
-    >
-        <span>Vue Moveable</span>
-    </Moveable>
+    <div>
+        <Todo
+            v-for="todo in todos"
+            :todo="todo"
+        />
+    </div>
 </template>
+
 <script>
-import Moveable from 'vue-moveable';
+import Todo from "../../components/Todo";
 
 export default {
-    name: 'app',
     components: {
-        Moveable,
+        Todo
     },
     data() {
         return {
-            moveable: {
-                draggable: true,
-                throttleDrag: 0,
-                resizable: true,
-                throttleResize: 1,
-                keepRatio: false,
-                scalable: false,
-                throttleScale: 0,
-                rotatable: false,
-                throttleRotate: 0,
-                pinchable: false,
-                origin: false,
-            }
+            todos: [
+                {id: 1, title: 'todo 1'},
+                {id: 2, title: 'todo 2'},
+                {id: 3, title: 'todo 3'}
+            ]
         }
-    },
-    methods: {
-        handleDrag({target, transform}) {
-            target.style.transform = transform;
-        },
-        handleResize({target, width, height, delta}) {
-            delta[0] && (target.style.width = `${width}px`);
-            delta[1] && (target.style.height = `${height}px`);
-        },
     }
 }
 </script>
