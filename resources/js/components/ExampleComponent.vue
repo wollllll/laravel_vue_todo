@@ -1,23 +1,25 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div
+        @mousedown="clickTarget"
+        style="height: 150px; width: 150px; background: red">
+        aaaaa
     </div>
 </template>
-
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
+
+export default {
+    name: 'app',
+    data() {
+        return {
+            isMoving: false,
+            positionX: 0,
+            positionY: 0
+        }
+    },
+    methods: {
+        clickTarget: (e) => {
+            
         }
     }
+}
 </script>
