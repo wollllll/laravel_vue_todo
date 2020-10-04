@@ -36,13 +36,9 @@ export default {
     },
     mounted() {
         this.getAll();
-        const $draggable = $('.draggable');
 
-        $draggable.draggable({
+        $('.draggable').draggable({
             containment: 'parent'
-        });
-        $draggable.on('mouseup', (e) => {
-
         });
     },
     methods: {
