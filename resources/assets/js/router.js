@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import Top from './pages/tops'
+import Top from './pages/Top';
 
 const DEFAULT_TITLE = 'てくてくツアーガイドさん | ';
 

@@ -14,8 +14,8 @@
 import "jquery";
 import "jquery-ui";
 import 'jquery-ui-dist/jquery-ui';
-import Base from "../../components/layouts/Base";
-import Todo from "../../components/Todo";
+import Base from "../components/layouts/Base";
+import Todo from "../components/Todo";
 
 export default {
     components: {
@@ -38,7 +38,7 @@ export default {
             containment: 'parent'
         });
         $todo.on('mouseup', (e) => {
-            alert('mouseup');
+
         });
         this.setInitialPosition();
     },

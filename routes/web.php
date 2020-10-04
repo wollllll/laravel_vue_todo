@@ -12,7 +12,7 @@
 */
 
 Route::get('/{any}', function () {
-    return view('welcome');
+    return view('top');
 })->where('any', '.*');
 
 Auth::routes();
