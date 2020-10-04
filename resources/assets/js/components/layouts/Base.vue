@@ -1,10 +1,10 @@
 <template>
     <div class="content">
-        <Header/>
+<!--        <Header/>-->
         <main>
             <slot></slot>
         </main>
-        <Footer/>
+<!--        <Footer/>-->
     </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
 
     main {
         background: #fff;
-        height: 100vh;
+        height: 100%;
     }
 }
 </style>

@@ -8,17 +8,22 @@
             :id="`todo-${todo.id}`"
             class="draggable"
             :style="`top: ${todo.top}px; left: ${todo.left}px`"
+            v-draggable
         />
     </Base>
 </template>
 
 <script>
+import { Draggable } from 'draggable-vue-directive';
 import Base from "../components/layouts/Base";
 import Todo from "../components/Todo";
 import CreateTodo from "../components/CreateTodo";
 import api from "../api";
 
 export default {
+    directives: {
+        Draggable,
+    },
     components: {
         Base,
         Todo,
