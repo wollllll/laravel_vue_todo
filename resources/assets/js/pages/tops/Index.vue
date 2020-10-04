@@ -2,6 +2,7 @@
     <div>
         <Todo
             v-for="todo in todos"
+            :key="todo.id"
             :todo="todo"
         />
     </div>
