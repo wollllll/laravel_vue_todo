@@ -28,17 +28,14 @@ export default {
     },
     data() {
         return {
-            todos: [
-                {id: 1, title: 'todo 1', top: 200, left: 300},
-                {id: 2, title: 'todo 2', top: 250, left: 222},
-                {id: 3, title: 'todo 3', top: 0, left: 700}
-            ]
+            todos: {}
         }
     },
     created() {
-        this.getAll();
+        // this.getAll();
     },
     mounted() {
+        this.getAll();
         const $draggable = $('.draggable');
 
         $draggable.draggable({
@@ -56,6 +53,7 @@ export default {
             api.todo.getAll()
                 .then(response => {
                     console.log('success');
+                    this.todos = response.data.todos;
                 })
                 .catch(() => {
                     console.log('fail')
