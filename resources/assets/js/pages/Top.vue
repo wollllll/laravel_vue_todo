@@ -14,7 +14,6 @@
 
 <script>
 import "jquery";
-import "jquery-ui";
 import 'jquery-ui-dist/jquery-ui';
 import Base from "../components/layouts/Base";
 import Todo from "../components/Todo";
