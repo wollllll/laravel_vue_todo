@@ -7,6 +7,7 @@
             :todo="todo"
             :id="`todo-${todo.id}`"
             class="draggable"
+            :style="`top: ${todo.top}px; left: ${todo.left}px`"
         />
     </Base>
 </template>
@@ -47,7 +48,6 @@ export default {
         $draggable.on('mouseup', (e) => {
 
         });
-        this.setInitialPosition();
     },
     methods: {
         /**
@@ -61,17 +61,6 @@ export default {
                 .catch(() => {
                     console.log('fail')
                 });
-        },
-        /**
-         * 初期位置を設定
-         */
-        setInitialPosition() {
-            this.todos.forEach(todo => {
-                $(`#todo-${todo.id}`).css({
-                    top: `${todo.top}px`,
-                    left: `${todo.left}px`
-                });
-            });
         }
     }
 }
