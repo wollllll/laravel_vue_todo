@@ -1,22 +1,15 @@
 <template>
     <header>
-        <div class="inner-header">
-            俺のTODO
-        </div>
+        俺のTODO
     </header>
 </template>
 
 <style lang="scss">
 header {
-    background: #f7fff7;
-    height: 80px;
-    line-height: 80px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
     font-size: 26px;
     font-weight: bold;
-
-    .inner-header {
-        width: 70%;
-        margin: 0 auto;
-    }
 }
 </style>

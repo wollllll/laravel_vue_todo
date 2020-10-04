@@ -1,10 +1,8 @@
 <template>
     <div class="content">
-<!--        <Header/>-->
-        <main>
-            <slot></slot>
-        </main>
-<!--        <Footer/>-->
+        <Header/>
+        <slot></slot>
+        <Footer/>
     </div>
 </template>
 
@@ -22,11 +20,8 @@ export default {
 
 <style lang="scss">
 .content {
+    position: relative;
+    height: 100vh;
     color: #252525;
-
-    main {
-        background: #fff;
-        height: 100%;
-    }
 }
 </style>

@@ -17,8 +17,7 @@ class TodosTableSeeder extends Seeder
         for ($i = 1; $i < 5; $i++) {
             $inserts[] = [
                 'content' =>  sprintf('content%dです', $i),
-                'top' => rand(0, 500),
-                'left' => rand(0, 500)
+                'top' => 50
             ];
         }
 

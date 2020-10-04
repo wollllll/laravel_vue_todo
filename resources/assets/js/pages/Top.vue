@@ -9,6 +9,7 @@
             class="draggable"
             :style="`top: ${todo.top}px; left: ${todo.left}px`"
             v-draggable
+            @mouseup="mouseUp"
         />
     </Base>
 </template>
@@ -31,15 +32,11 @@ export default {
     },
     data() {
         return {
-            todos: [
-                {id: 1, content: 'content', top: 123, left: 233},
-                {id: 2, content: 'content', top: 222, left: 423},
-                {id: 3, content: 'content', top: 153, left: 325}
-            ]
+            todos: {}
         }
     },
     created() {
-        // this.getAll();
+        this.getAll();
     },
     methods: {
         /**
@@ -54,6 +51,9 @@ export default {
                 .catch(() => {
                     console.log('fail')
                 });
+        },
+        mouseUp() {
+            alert('a')
         }
     }
 }

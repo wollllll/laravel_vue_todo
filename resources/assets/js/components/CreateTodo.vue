@@ -66,9 +66,11 @@ export default {
 
 <style lang="scss">
 .btn-show-modal {
-    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
     width: 100px;
-    margin: 16px 16px 0 auto;
+    z-index: 10000;
 }
 
 .create-todo-modal {

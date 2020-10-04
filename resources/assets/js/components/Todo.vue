@@ -16,5 +16,6 @@ export default {
 .todo {
     width: 150px;
     height: 150px;
+    z-index: 5000;
 }
 </style>
