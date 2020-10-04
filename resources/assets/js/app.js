@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('normalize.css');
 window.Vue = require('vue');
 
 import router from "./router";

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <Base>
         <Todo
             v-for="todo in todos"
             :key="todo.id"
@@ -7,17 +7,19 @@
             :id="`todo-${todo.id}`"
             class="todo"
         />
-    </div>
+    </Base>
 </template>
 
 <script>
 import "jquery";
 import "jquery-ui";
 import 'jquery-ui-dist/jquery-ui';
+import Base from "../../components/layouts/Base";
 import Todo from "../../components/Todo";
 
 export default {
     components: {
+        Base,
         Todo
     },
     data() {
@@ -30,7 +32,14 @@ export default {
         }
     },
     mounted() {
-        $('.todo').draggable();
+        const $todo = $('.todo');
+
+        $todo.draggable({
+            containment: 'parent'
+        });
+        $todo.on('mouseup', (e) => {
+            alert('mouseup');
+        });
         this.setInitialPosition();
     },
     methods: {
