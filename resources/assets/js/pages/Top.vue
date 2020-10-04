@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import "jquery";
-import 'jquery-ui-dist/jquery-ui';
 import Base from "../components/layouts/Base";
 import Todo from "../components/Todo";
 import CreateTodo from "../components/CreateTodo";
@@ -28,18 +26,15 @@ export default {
     },
     data() {
         return {
-            todos: {}
+            todos: [
+                {id: 1, content: 'content', top: 123, left: 233},
+                {id: 2, content: 'content', top: 222, left: 423},
+                {id: 3, content: 'content', top: 153, left: 325}
+            ]
         }
     },
     created() {
         // this.getAll();
-    },
-    mounted() {
-        this.getAll();
-
-        $('.draggable').draggable({
-            containment: 'parent'
-        });
     },
     methods: {
         /**

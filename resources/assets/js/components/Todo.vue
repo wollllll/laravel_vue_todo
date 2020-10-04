@@ -1,6 +1,6 @@
 <template>
     <div class="card todo">
-        {{ todo.title }}
+        {{ todo.content }}
     </div>
 </template>
 
