@@ -18,7 +18,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form @submit="submit">
+                        <form @submit.prevent="submit">
                             <div class="form-group">
                                 <label for="content">内容</label>
                                 <textarea
@@ -33,7 +33,7 @@
                             <div>
                                 <button type="submit" class="btn btn-primary btn-create">追加</button>
                             </div>
-                        </form>
+                        </form @submit.prevent="submit">
                     </div>
                 </div>
             </div>
@@ -55,6 +55,7 @@ export default {
             api.todo.store(this.content)
                 .then(response => {
                     console.log('success');
+                    this.$router.push({name: 'Top'});
                 })
                 .catch(() => {
                     console.log('fail');
@@ -70,7 +71,7 @@ export default {
     top: 16px;
     right: 16px;
     width: 100px;
-    z-index: 10000;
+    z-index: 2;
 }
 
 .create-todo-modal {
