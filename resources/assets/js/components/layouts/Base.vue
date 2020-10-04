@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="content">
         <Header/>
         <main>
             <slot></slot>
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
-.container {
+.content {
     color: #252525;
 
     main {

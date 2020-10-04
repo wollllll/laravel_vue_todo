@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="card todo">
         {{ todo.title }}
     </div>
 </template>
@@ -11,3 +11,10 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.todo {
+    width: 150px;
+    height: 150px;
+}
+</style>
