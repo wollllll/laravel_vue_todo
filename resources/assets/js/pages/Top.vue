@@ -18,6 +18,7 @@ import 'jquery-ui-dist/jquery-ui';
 import Base from "../components/layouts/Base";
 import Todo from "../components/Todo";
 import CreateTodo from "../components/CreateTodo";
+import api from "../api";
 
 export default {
     components: {
@@ -34,6 +35,9 @@ export default {
             ]
         }
     },
+    created() {
+        this.getAll();
+    },
     mounted() {
         const $draggable = $('.draggable');
 
@@ -46,6 +50,18 @@ export default {
         this.setInitialPosition();
     },
     methods: {
+        /**
+         * すべてのtodo取得
+         */
+        getAll() {
+            api.todo.getAll()
+                .then(response => {
+                    console.log('success');
+                })
+                .catch(() => {
+                    console.log('fail')
+                });
+        },
         /**
          * 初期位置を設定
          */

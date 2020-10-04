@@ -6,4 +6,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/todos', 'TodoController@store');
+Route::namespace('Api')->group(function () {
+    Route::get('/todos/getAll', 'TodoController@getAll');
+    Route::post('/todos', 'TodoController@store');
+});
