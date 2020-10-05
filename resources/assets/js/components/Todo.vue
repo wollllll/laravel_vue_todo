@@ -5,13 +5,21 @@
 </template>
 
 <script>
+import api from "../api";
+
 export default {
     props: {
         todo: Object
     },
     methods: {
         mouseUp(e) {
-            console.log(e.clientY, e.clientX)
+            api.todo.update(this.todo.id, e.clientY, e.clientX)
+                .then(()=> {
+                    console.log('success');
+                })
+                .catch(() => {
+                    console.log('fail');
+                });
         }
     }
 }

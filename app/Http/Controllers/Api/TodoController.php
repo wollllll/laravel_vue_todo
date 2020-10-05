@@ -34,4 +34,13 @@ class TodoController extends Controller
             'todo' => $todo
         ]);
     }
+
+    public function update(Request $request, Todo $todo)
+    {
+        $todo->update($request->all());
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
 }
