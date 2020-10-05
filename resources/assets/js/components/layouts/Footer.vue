@@ -1,13 +1,28 @@
 <template>
-    <footer>
-        footer
+    <footer class="shadow-sm">
+        &copy;俺のTODO 2020 <span v-if="2020 !== year">- {{ year }}</span>
     </footer>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            year: ''
+        }
+    },
+    created() {
+        const date = new Date();
+
+        this.year = date.getFullYear();
+    }
+}
+</script>
+
 <style lang="scss">
 footer {
-    background: gray;
     border-radius: 8px;
+    background: #f7fff7;
     position: absolute;
     left: 50%;
     bottom: -8px;
