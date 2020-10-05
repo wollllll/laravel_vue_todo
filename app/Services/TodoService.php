@@ -42,10 +42,7 @@ class TodoService
         try {
             DB::beginTransaction();
 
-            $todo->update([
-                'top' => str_replace('px', '', Arr::get($inputs, 'top')),
-                'left' => str_replace('px', '', Arr::get($inputs, 'left'))
-            ]);
+            $todo->update($inputs);
 
             DB::commit();
         } catch (\Exception $e) {

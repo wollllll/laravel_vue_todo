@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Todo\StoreRequest;
+use App\Http\Requests\Todo\UpdateRequest;
 use App\Models\Todo;
 use App\Repositories\Todo\TodoRepository;
 use App\Services\TodoService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
@@ -61,11 +61,11 @@ class TodoController extends Controller
     /**
      * TODO位置更新処理
      *
-     * @param Request $request
+     * @param UpdateRequest $request
      * @param Todo $todo
      * @return JsonResponse
      */
-    public function update(Request $request, Todo $todo): JsonResponse
+    public function update(UpdateRequest $request, Todo $todo): JsonResponse
     {
         $this->service->update($request->all(), $todo);
 
