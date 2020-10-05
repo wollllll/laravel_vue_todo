@@ -32,11 +32,14 @@ class UpdateRequest extends FormRequest
         ];
     }
 
+    /**
+     * 成形
+     */
     public function prepareForValidation()
     {
         $this->merge([
-            'top' => str_replace('px', '', $this->top),
-            'left' => str_replace('px', '', $this->left)
+            'top' => castForInt(str_replace('px', '', $this->top)),
+            'left' => castForInt(str_replace('px', '', $this->left))
         ]);
     }
 }

@@ -41,7 +41,8 @@
             "database/factories"
         ],
         "files": [
-            "app/Helpers/urlHelpers.php"
+            "app/Helpers/urlHelpers.php",
+            "app/Helpers/filteringCastHelpers.php"
         ]
     },
     "autoload-dev": {
