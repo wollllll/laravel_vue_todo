@@ -4,12 +4,24 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Todo;
+use App\Services\TodoService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class TodoController extends Controller
 {
-    // todo: 後でリファクタリング
+    /** @var $service */
+    private $service;
+
+    /**
+     * TodoController constructor.
+     * @param TodoService $service
+     */
+    public function __construct(TodoService $service)
+    {
+        $this->service = $service;
+    }
 
     public function getAll()
     {
@@ -21,23 +33,18 @@ class TodoController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        $inputs = $request->all();
-
-        $todo = Todo::create(array_merge($inputs, [
-            'top' => 50,
-            'left' => 50
-        ]));
+        $todo = $this->service->store($request->all());
 
         return response()->json([
             'todo' => $todo
         ]);
     }
 
-    public function update(Request $request, Todo $todo)
+    public function update(Request $request, Todo $todo): JsonResponse
     {
-        $todo->update($request->all());
+        $this->service->update($request->all(), $todo);
 
         return response()->json([
             'status' => 'success'

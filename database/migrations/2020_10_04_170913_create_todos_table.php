@@ -17,8 +17,8 @@ class CreateTodosTable extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('content')->comment('内容');
-            $table->integer('top')->default(0)->comment('topの位置');
-            $table->integer('left')->default(0)->comment('leftの位置');
+            $table->integer('top')->default(50)->comment('topの位置');
+            $table->integer('left')->default(50)->comment('leftの位置');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
