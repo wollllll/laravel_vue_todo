@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 
 import Top from './pages/Top';
 
-const DEFAULT_TITLE = 'てくてくツアーガイドさん | ';
+const DEFAULT_TITLE = '俺のTODO | ';
 
 const router = new VueRouter({
     mode: 'history',

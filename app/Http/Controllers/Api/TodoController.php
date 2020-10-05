@@ -25,7 +25,10 @@ class TodoController extends Controller
     {
         $inputs = $request->all();
 
-        $todo = Todo::create($inputs);
+        $todo = Todo::create(array_merge($inputs, [
+            'top' => 50,
+            'left' => 50
+        ]));
 
         return response()->json([
             'todo' => $todo

@@ -33,7 +33,7 @@
                             <div>
                                 <button type="submit" class="btn btn-primary btn-create">追加</button>
                             </div>
-                        </form @submit.prevent="submit">
+                        </form>
                     </div>
                 </div>
             </div>

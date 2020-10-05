@@ -14,10 +14,11 @@ class TodosTableSeeder extends Seeder
     {
         $inserts = [];
 
-        for ($i = 1; $i < 5; $i++) {
+        for ($i = 1; $i < 4; $i++) {
             $inserts[] = [
                 'content' =>  sprintf('content%dです', $i),
-                'top' => 50
+                'top' => 291,
+                'left' => 685
             ];
         }
 

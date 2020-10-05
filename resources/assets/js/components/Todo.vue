@@ -1,5 +1,5 @@
 <template>
-    <div class="card todo">
+    <div class="card todo" @mouseup="mouseUp">
         {{ todo.content }}
     </div>
 </template>
@@ -8,12 +8,18 @@
 export default {
     props: {
         todo: Object
+    },
+    methods: {
+        mouseUp(e) {
+            console.log(e.clientY, e.clientX)
+        }
     }
 }
 </script>
 
 <style lang="scss">
 .todo {
+    position: absolute;
     width: 150px;
     height: 150px;
     z-index: 1;

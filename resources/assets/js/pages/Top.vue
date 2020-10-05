@@ -9,7 +9,6 @@
             class="draggable"
             :style="`top: ${todo.top}px; left: ${todo.left}px`"
             v-draggable
-            @mouseup="mouseUp"
         />
     </Base>
 </template>
@@ -52,9 +51,6 @@ export default {
                     console.log('fail')
                 });
         },
-        mouseUp() {
-            alert('a')
-        }
     }
 }
 </script>
