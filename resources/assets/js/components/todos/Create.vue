@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import api from "../api";
+import api from "../../api";
 
 export default {
     data() {
@@ -71,6 +71,7 @@ export default {
                     document.getElementById('close-modal').click();
 
                     this.$emit('push-todo', response.data.todo);
+                    this.content = '';
                 })
                 .catch((error) => {
                     console.log('fail');
@@ -103,6 +104,10 @@ export default {
         display: block;
         width: 150px;
         margin: 0 auto;
+
+        &:hover {
+            opacity: .7;
+        }
     }
 
     .validate-message {

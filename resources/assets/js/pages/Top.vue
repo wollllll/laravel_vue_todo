@@ -1,6 +1,5 @@
 <template>
     <Base>
-        <CreateTodo @push-todo="pushTodo"/>
         <Todo
             v-for="todo in todos"
             :key="todo.id"
@@ -10,6 +9,8 @@
             :style="`top: ${todo.top}px; left: ${todo.left}px`"
             v-draggable
         />
+        <Create @push-todo="pushTodo"/>
+        <Delete/>
     </Base>
 </template>
 
@@ -17,7 +18,8 @@
 import {Draggable} from 'draggable-vue-directive';
 import Base from "../components/layouts/Base";
 import Todo from "../components/Todo";
-import CreateTodo from "../components/CreateTodo";
+import Create from "../components/todos/Create";
+import Delete from "../components/todos/Delete";
 import api from "../api";
 
 export default {
@@ -27,7 +29,8 @@ export default {
     components: {
         Base,
         Todo,
-        CreateTodo
+        Create,
+        Delete
     },
     data() {
         return {
