@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Todo\StoreRequest;
 use App\Models\Todo;
 use App\Repositories\Todo\TodoRepository;
 use App\Services\TodoService;
@@ -45,10 +46,10 @@ class TodoController extends Controller
     /**
      * TODO保存処理
      *
-     * @param Request $request
+     * @param StoreRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(StoreRequest $request): JsonResponse
     {
         $todo = $this->service->store($request->all());
 

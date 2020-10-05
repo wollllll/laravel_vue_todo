@@ -17,6 +17,15 @@
         >
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
+                    <button
+                        type="button"
+                        id="close-modal"
+                        class="close d-none"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        &nbsp;
+                    </button>
                     <div class="modal-body">
                         <form @submit.prevent="submit">
                             <div class="form-group">
@@ -28,6 +37,7 @@
                                     rows="8"
                                     v-model="content"
                                 ></textarea>
+                                <span class="validate-message">{{ ...errors.content }}</span>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary btn-create">追加</button>
@@ -46,7 +56,8 @@ import api from "../api";
 export default {
     data() {
         return {
-            content: ''
+            content: '',
+            errors: []
         }
     },
     methods: {
@@ -54,10 +65,11 @@ export default {
             api.todo.store(this.content)
                 .then(response => {
                     console.log('success');
-                    this.$router.push({name: 'Top'});
+                    document.getElementById('close-modal').click();
                 })
                 .catch((error) => {
                     console.log('fail');
+                    this.errors = error.response.data.errors;
                 });
         }
     }
@@ -78,6 +90,10 @@ export default {
         display: block;
         width: 150px;
         margin: 0 auto;
+    }
+
+    .validate-message {
+        color: #dc3545;
     }
 }
 </style>

@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 
 import Top from './pages/Top';
 
-const DEFAULT_TITLE = '俺のTODO | ';
+const DEFAULT_TITLE = '俺のTODO';
 
 const router = new VueRouter({
     mode: 'history',
@@ -14,13 +14,10 @@ const router = new VueRouter({
             path: '/',
             name: 'Top',
             component: Top,
-            meta: {title: 'TOP'}
         }
     ]
 });
 
-router.afterEach((to) => {
-    document.title = DEFAULT_TITLE + to.meta.title;
-});
+document.title = DEFAULT_TITLE;
 
 export default router;
