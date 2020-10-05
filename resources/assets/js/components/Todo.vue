@@ -1,5 +1,5 @@
 <template>
-    <div class="card todo" @mouseup="getPosition">
+    <div class="card todo shadow-sm" @mouseup="getPosition">
         <p>{{ todo.content }}</p>
     </div>
 </template>
@@ -35,6 +35,7 @@ export default {
     position: absolute;
     width: 150px;
     height: 150px;
+    padding: 8px;
     z-index: 1;
 
     &:hover {

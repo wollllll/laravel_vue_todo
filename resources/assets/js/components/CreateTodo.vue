@@ -2,7 +2,7 @@
     <div>
         <button
             type="button"
-            class="btn btn-primary btn-show-modal"
+            class="btn shadow-sm btn-show-modal"
             data-toggle="modal"
             data-target="#show-create-todo-modal"
         >
@@ -40,7 +40,7 @@
                                 <span class="validate-message">{{ ...errors.content }}</span>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-primary btn-create">追加</button>
+                                <button type="submit" class="btn btn-create">追加</button>
                             </div>
                         </form>
                     </div>
@@ -83,15 +83,23 @@ export default {
 
 <style lang="scss">
 .btn-show-modal {
+    border: 1px solid rgba(0,0,0,.125);
+    background: #f7fff7;
     position: absolute;
     top: 16px;
     right: 16px;
     width: 100px;
     z-index: 2;
+
+    &:hover {
+        opacity: .7;
+    }
 }
 
 .create-todo-modal {
     .btn-create {
+        border: 1px solid rgba(0,0,0,.125);
+        background: #f7fff7;
         display: block;
         width: 150px;
         margin: 0 auto;

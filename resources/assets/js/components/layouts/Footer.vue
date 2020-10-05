@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss">
 footer {
-    border-radius: 8px;
+    border-radius: .25em;
     background: #f7fff7;
     position: absolute;
     left: 50%;
