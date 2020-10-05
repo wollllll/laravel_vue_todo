@@ -31,5 +31,13 @@ export default {
     width: 150px;
     height: 150px;
     z-index: 1;
+
+    &:hover {
+        cursor: grab;
+    }
+
+    &:active {
+        cursor: grabbing;
+    }
 }
 </style>

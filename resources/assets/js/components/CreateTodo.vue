@@ -20,7 +20,6 @@
                     <div class="modal-body">
                         <form @submit.prevent="submit">
                             <div class="form-group">
-                                <label for="content">内容</label>
                                 <textarea
                                     type="text"
                                     id="content"
@@ -57,7 +56,7 @@ export default {
                     console.log('success');
                     this.$router.push({name: 'Top'});
                 })
-                .catch(() => {
+                .catch((error) => {
                     console.log('fail');
                 });
         }
