@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class TodoService
 {
+    /**
+     * TODO保存処理
+     *
+     * @param array $inputs
+     * @return Todo
+     */
     public function store(array $inputs): Todo
     {
         try {
@@ -23,6 +29,12 @@ class TodoService
         }
     }
 
+    /**
+     * TODO位置更新処理
+     *
+     * @param array $inputs
+     * @param Todo $todo
+     */
     public function update(array $inputs, Todo $todo): void
     {
         try {
