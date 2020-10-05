@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Models\Todo;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Psy\Util\Str;
 
 class TodoService
 {
@@ -40,7 +42,10 @@ class TodoService
         try {
             DB::beginTransaction();
 
-            $todo->update($inputs);
+            $todo->update([
+                'top' => str_replace('px', '', Arr::get($inputs, 'top')),
+                'left' => str_replace('px', '', Arr::get($inputs, 'left'))
+            ]);
 
             DB::commit();
         } catch (\Exception $e) {

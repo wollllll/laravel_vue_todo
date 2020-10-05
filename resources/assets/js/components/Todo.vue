@@ -1,6 +1,6 @@
 <template>
     <div class="card todo" @mouseup="mouseUp">
-        {{ todo.content }}
+        <p>{{ todo.content }}</p>
     </div>
 </template>
 
@@ -13,8 +13,8 @@ export default {
     },
     methods: {
         mouseUp(e) {
-            api.todo.update(this.todo.id, e.clientY, e.clientX)
-                .then(()=> {
+            api.todo.update(this.todo.id, e.target.style.top, e.target.style.left)
+                .then(() => {
                     console.log('success');
                 })
                 .catch(() => {
