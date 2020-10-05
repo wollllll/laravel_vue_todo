@@ -1,6 +1,6 @@
 <template>
     <Base>
-        <CreateTodo/>
+        <CreateTodo @push-todo="pushTodo"/>
         <Todo
             v-for="todo in todos"
             :key="todo.id"
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { Draggable } from 'draggable-vue-directive';
+import {Draggable} from 'draggable-vue-directive';
 import Base from "../components/layouts/Base";
 import Todo from "../components/Todo";
 import CreateTodo from "../components/CreateTodo";
@@ -39,9 +39,9 @@ export default {
     },
     methods: {
         /**
-         * すべてのtodo取得
+         * すべてのTODO取得
          */
-        getAll() {
+         getAll() {
             api.todo.getAll()
                 .then(response => {
                     console.log('success');
@@ -51,6 +51,14 @@ export default {
                     console.log('fail')
                 });
         },
+         /**
+         * 追加したtodoをオブジェクトに追加
+         *
+         * @param todo
+         */
+        pushTodo(todo) {
+            this.todos.push(todo);
+        }
     }
 }
 </script>

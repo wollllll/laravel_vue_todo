@@ -1,5 +1,5 @@
 <template>
-    <div class="card todo" @mouseup="mouseUp">
+    <div class="card todo" @mouseup="getPosition">
         <p>{{ todo.content }}</p>
     </div>
 </template>
@@ -12,7 +12,12 @@ export default {
         todo: Object
     },
     methods: {
-        mouseUp(e) {
+        /**
+         * 現在の座標取得して更新
+         *
+         * @param e
+         */
+        getPosition(e) {
             api.todo.update(this.todo.id, e.target.style.top, e.target.style.left)
                 .then(() => {
                     console.log('success');

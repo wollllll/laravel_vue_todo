@@ -61,11 +61,16 @@ export default {
         }
     },
     methods: {
+        /**
+         * TODO保存
+         */
         submit() {
             api.todo.store(this.content)
                 .then(response => {
                     console.log('success');
                     document.getElementById('close-modal').click();
+
+                    this.$emit('push-todo', response.data.todo);
                 })
                 .catch((error) => {
                     console.log('fail');

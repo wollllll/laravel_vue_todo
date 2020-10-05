@@ -20,7 +20,10 @@ class TodoService
         try {
             DB::beginTransaction();
 
-            $todo = Todo::create($inputs);
+            $todo = Todo::create(array_merge($inputs, [
+                'top' => 50,
+                'left' => 50
+            ]));
 
             DB::commit();
 
