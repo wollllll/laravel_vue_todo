@@ -30,5 +30,6 @@ export default {
     left: 50%;
     transform: translateX(-50%);
     width: 20%;
+    z-index: 10;
 }
 </style>

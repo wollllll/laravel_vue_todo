@@ -90,7 +90,7 @@ export default {
     top: 16px;
     right: 16px;
     width: 100px;
-    z-index: 2;
+    z-index: 10;
 
     &:hover {
         opacity: .7;
