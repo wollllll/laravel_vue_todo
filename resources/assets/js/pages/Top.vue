@@ -78,6 +78,9 @@ export default {
                     console.log('fail')
                 });
         },
+        /**
+         * 検索ワードをdataにセット
+         */
         setSearch(search) {
             this.search = search;
             this.getAll();
