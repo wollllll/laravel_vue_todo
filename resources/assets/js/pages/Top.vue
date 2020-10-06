@@ -50,25 +50,31 @@ export default {
         }
     },
     created() {
+        this.initialUrl();
         this.getAll();
     },
     mounted() {
         this.getWidth();
         this.getHeight();
     },
+    watch: {
+        search() {
+            const router = this.$router;
+
+            this.search ? router.replace({name: "Top", query: {search: this.search}}) : router.replace({name: "Top"});
+        }
+    },
     methods: {
+        /**
+         * クエリーを取り除いたURLにする
+         */
+        initialUrl() {
+            this.$router.replace({name: "Top"});
+        },
         /**
          * すべてのTODO取得
          */
         getAll() {
-            if (this.search) {
-                this.$router.replace({name: "Top", query: {search: this.search}});
-            }
-
-            if (this.$route.query.search) {
-                this.search = this.$route.query.search;
-            }
-
             api.todo.getAll(this.search)
                 .then(response => {
                     console.log('success');
