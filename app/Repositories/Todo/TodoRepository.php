@@ -23,12 +23,12 @@ class TodoRepository implements TodoRepositoryInterface
     /**
      * すべてのTODO取得
      *
-     * @param $query
+     * @param $search
      * @return Collection
      */
-    public function getAll($query): Collection
+    public function getAll($search): Collection
     {
-        return $this->todo->where('content', 'LIKE', '%' . $query . '%')->get();
+        return $this->todo->where('content', 'LIKE', '%' . $search . '%')->get();
     }
 }
 

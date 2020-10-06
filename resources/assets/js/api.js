@@ -1,8 +1,8 @@
 export default {
     todo: {
-        getAll: async (query) => await axios.get('/api/todos/getAll', {
+        getAll: async (search) => await axios.get('/api/todos/getAll', {
             params: {
-                query
+                search
             }
         }),
         store: async (content) => await axios.post('/api/todos', {

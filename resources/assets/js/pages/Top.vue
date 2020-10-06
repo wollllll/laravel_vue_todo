@@ -9,7 +9,7 @@
             :style="`top: ${todo.top}px; left: ${todo.left}px`"
             v-draggable="draggableValue"
         />
-        <Search @search="search"/>
+        <Search @search="setSearch"/>
         <Create @push-todo="pushTodo"/>
         <Delete/>
     </Base>
@@ -38,7 +38,7 @@ export default {
     data() {
         return {
             todos: {},
-            query: '',
+            search: '',
             draggableValue: {
                 boundingRect: {
                     top: 0,
@@ -61,18 +61,25 @@ export default {
          * すべてのTODO取得
          */
         getAll() {
-            api.todo.getAll(this.query)
+            if (this.search) {
+                this.$router.replace({name: "Top", query: {search: this.search}});
+            }
+
+            if (this.$route.query.search) {
+                this.search = this.$route.query.search;
+            }
+
+            api.todo.getAll(this.search)
                 .then(response => {
                     console.log('success');
-                    console.log(response);
                     this.todos = response.data.todos;
                 })
                 .catch(() => {
                     console.log('fail')
                 });
         },
-        search(query) {
-            this.query = query;
+        setSearch(search) {
+            this.search = search;
             this.getAll();
         },
         /**

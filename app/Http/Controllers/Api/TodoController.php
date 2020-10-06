@@ -41,7 +41,7 @@ class TodoController extends Controller
     public function getAll(Request $request): JsonResponse
     {
         // todo queryの渡し方修正
-        $todos = $this->repository->getAll(Arr::get($request->all(), 'query'));
+        $todos = $this->repository->getAll(Arr::get($request->all(), 'search'));
 
         return response()->json([
             'todos' => $todos
