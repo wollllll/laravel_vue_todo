@@ -9,6 +9,7 @@
             :style="`top: ${todo.top}px; left: ${todo.left}px`"
             v-draggable="draggableValue"
         />
+        <Search @search="search"/>
         <Create @push-todo="pushTodo"/>
         <Delete/>
     </Base>
@@ -20,6 +21,7 @@ import Base from "../components/layouts/Base";
 import Todo from "../components/Todo";
 import Create from "../components/todos/Create";
 import Delete from "../components/todos/Delete";
+import Search from "../components/Search";
 import api from "../api";
 
 export default {
@@ -30,11 +32,13 @@ export default {
         Base,
         Todo,
         Create,
-        Delete
+        Delete,
+        Search
     },
     data() {
         return {
             todos: {},
+            query: '',
             draggableValue: {
                 boundingRect: {
                     top: 0,
@@ -57,14 +61,19 @@ export default {
          * すべてのTODO取得
          */
         getAll() {
-            api.todo.getAll()
+            api.todo.getAll(this.query)
                 .then(response => {
                     console.log('success');
+                    console.log(response);
                     this.todos = response.data.todos;
                 })
                 .catch(() => {
                     console.log('fail')
                 });
+        },
+        search(query) {
+            this.query = query;
+            this.getAll();
         },
         /**
          * 追加したtodoをオブジェクトに追加

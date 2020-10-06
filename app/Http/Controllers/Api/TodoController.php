@@ -9,6 +9,9 @@ use App\Models\Todo;
 use App\Repositories\Todo\TodoRepository;
 use App\Services\TodoService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 
 class TodoController extends Controller
 {
@@ -32,11 +35,13 @@ class TodoController extends Controller
     /**
      * すべてのTODO取得
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function getAll(): JsonResponse
+    public function getAll(Request $request): JsonResponse
     {
-        $todos = $this->repository->getAll();
+        // todo queryの渡し方修正
+        $todos = $this->repository->getAll(Arr::get($request->all(), 'query'));
 
         return response()->json([
             'todos' => $todos
@@ -51,7 +56,7 @@ class TodoController extends Controller
      */
     public function store(StoreRequest $request): JsonResponse
     {
-        $todo = $this->service->store($request->all());
+        $todo = $this->service->store($request->validated());
 
         return response()->json([
             'todo' => $todo

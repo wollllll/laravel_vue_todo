@@ -7,7 +7,8 @@ interface TodoRepositoryInterface
     /**
      * すべてのTODO取得
      *
+     * @param string $query
      * @return mixed
      */
-    public function getAll();
+    public function getAll(string $query);
 }

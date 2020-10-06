@@ -4,6 +4,7 @@ namespace App\Repositories\Todo;
 
 use App\Models\Todo;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Log;
 
 class TodoRepository implements TodoRepositoryInterface
 {
@@ -22,11 +23,12 @@ class TodoRepository implements TodoRepositoryInterface
     /**
      * すべてのTODO取得
      *
+     * @param $query
      * @return Collection
      */
-    public function getAll(): Collection
+    public function getAll($query): Collection
     {
-        return $this->todo->get();
+        return $this->todo->where('content', 'LIKE', '%' . $query . '%')->get();
     }
 }
 
