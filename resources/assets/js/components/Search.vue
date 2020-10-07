@@ -26,7 +26,7 @@ export default {
 <style lang="scss">
 .search-box {
     position: absolute;
-    top: 16px;
+    top: 8px;
     left: 50%;
     transform: translateX(-50%);
     width: 20%;

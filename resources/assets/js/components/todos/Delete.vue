@@ -8,8 +8,8 @@
 .icon-trash {
     border: 1px solid #dc3545;
     position: absolute;
-    left: 16px;
-    bottom: 16px;
+    left: 8px;
+    bottom: 8px;
     width: 150px;
     height: 150px;
     font-size: 70px;

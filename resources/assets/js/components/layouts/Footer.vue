@@ -21,12 +21,13 @@ export default {
 
 <style lang="scss">
 footer {
+    border: 1px solid rgba(0,0,0,.125);
     border-radius: .25em;
     background: #f7fff7;
     position: absolute;
     left: 50%;
-    bottom: -8px;
-    transform: translate(-50%, -50%);
+    bottom: 8px;
+    transform: translateX(-50%);
     width: 300px;
     height: 50px;
     text-align: center;

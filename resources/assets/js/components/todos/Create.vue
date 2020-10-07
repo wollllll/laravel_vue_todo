@@ -87,8 +87,8 @@ export default {
     border: 1px solid rgba(0,0,0,.125);
     background: #f7fff7;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 8px;
+    right: 8px;
     width: 100px;
     z-index: 10;
 
