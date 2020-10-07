@@ -9,6 +9,7 @@
             class="draggable"
             :style="`top: ${todo.top}px; left: ${todo.left}px`"
             v-draggable="draggableValue"
+            @get-delete-todo="filterDeleteTodo"
         />
         <Search @search="setSearch"/>
         <Create @push-todo="pushTodo"/>
@@ -52,6 +53,7 @@ export default {
         }
     },
     created() {
+        // todo 修正
         // this.initialUrl();
         this.getAll();
     },
@@ -113,6 +115,16 @@ export default {
          */
         getHeight() {
             this.draggableValue.boundingRect.bottom = document.getElementById('todo-area').clientHeight;
+        },
+        /**
+         * 削除したTODOを配列から除外
+         *
+         * @param targetTodo
+         */
+        filterDeleteTodo(targetTodo) {
+            this.todos = this.todos.filter(todo => {
+                return todo === targetTodo;
+            });
         }
     }
 }

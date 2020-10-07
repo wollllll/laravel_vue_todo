@@ -12,6 +12,9 @@ export default {
             id,
             top,
             left
+        }),
+        delete: async (id) => await axios.delete(`/api/todos/${id}`, {
+            id
         })
     }
 }

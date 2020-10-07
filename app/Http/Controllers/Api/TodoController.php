@@ -40,7 +40,7 @@ class TodoController extends Controller
      */
     public function getAll(Request $request): JsonResponse
     {
-        // todo queryの渡し方修正
+        // todo queryの渡し方修正 nullになる
         $todos = $this->repository->getAll(Arr::get($request->all(), 'search'));
 
         return response()->json([
@@ -76,6 +76,23 @@ class TodoController extends Controller
 
         return response()->json([
             'status' => 'success'
+        ]);
+    }
+
+    /**
+     * TODO削除処理
+     *
+     * @param int $id
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function destroy(int $id): JsonResponse
+    {
+        $todo = $this->repository->findById($id);
+        $this->repository->delete($todo);
+
+        return response()->json([
+            'todo' => $todo
         ]);
     }
 }

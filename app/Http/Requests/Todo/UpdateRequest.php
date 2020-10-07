@@ -3,8 +3,6 @@
 namespace App\Http\Requests\Todo;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 
 class UpdateRequest extends FormRequest
 {
@@ -26,7 +24,6 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'integer', 'exists:todos,id'],
             'top' => ['required', 'integer'],
             'left' => ['required', 'integer']
         ];

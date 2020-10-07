@@ -4,7 +4,6 @@ namespace App\Repositories\Todo;
 
 use App\Models\Todo;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Log;
 
 class TodoRepository implements TodoRepositoryInterface
 {
@@ -21,6 +20,17 @@ class TodoRepository implements TodoRepositoryInterface
     }
 
     /**
+     * TODO取得処理
+     *
+     * @param int $id
+     * @return Todo
+     */
+    public function findById(int $id): Todo
+    {
+        return $this->todo->find($id);
+    }
+
+    /**
      * すべてのTODO取得
      *
      * @param $search
@@ -29,6 +39,18 @@ class TodoRepository implements TodoRepositoryInterface
     public function getAll($search): Collection
     {
         return $this->todo->where('content', 'LIKE', '%' . $search . '%')->get();
+    }
+
+    /**
+     * TODO削除処理
+     *
+     * @param Todo $todo
+     * @return bool|null
+     * @throws \Exception
+     */
+    public function delete(Todo $todo)
+    {
+        return $todo->delete();
     }
 }
 
