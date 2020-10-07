@@ -11,7 +11,6 @@ use App\Services\TodoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 
 class TodoController extends Controller
 {
@@ -19,7 +18,7 @@ class TodoController extends Controller
     private $service;
 
     /** @var TodoRepository */
-    private $repository;
+    private $todoRepository;
 
     /**
      * TodoController constructor.
@@ -29,7 +28,7 @@ class TodoController extends Controller
     public function __construct(TodoService $service, TodoRepository $repository)
     {
         $this->service = $service;
-        $this->repository = $repository;
+        $this->todoRepository = $repository;
     }
 
     /**
@@ -41,7 +40,7 @@ class TodoController extends Controller
     public function getAll(Request $request): JsonResponse
     {
         // todo queryの渡し方修正 nullになる
-        $todos = $this->repository->getAll(Arr::get($request->all(), 'search'));
+        $todos = $this->todoRepository->getAll(Arr::get($request->all(), 'search'));
 
         return response()->json([
             'todos' => $todos
@@ -88,8 +87,8 @@ class TodoController extends Controller
      */
     public function destroy(int $id): JsonResponse
     {
-        $todo = $this->repository->findById($id);
-        $this->repository->delete($todo);
+        $todo = $this->todoRepository->findById($id);
+        $this->todoRepository->delete($todo);
 
         return response()->json([
             'todo' => $todo

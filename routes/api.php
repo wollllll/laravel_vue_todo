@@ -9,7 +9,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('Api')->group(function () {
     Route::get('/todos/getAll', 'TodoController@getAll');
-    Route::post('/todos', 'TodoController@store');
-    Route::put('/todos/{todo}', 'TodoController@update');
-    Route::delete('/todos/{todo}', 'TodoController@destroy');
+    Route::resource('todos', 'TodoController', ['only' => ['store', 'update', 'destroy']]);
 });

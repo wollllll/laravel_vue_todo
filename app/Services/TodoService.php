@@ -3,12 +3,23 @@
 namespace App\Services;
 
 use App\Models\Todo;
-use Illuminate\Support\Arr;
+use App\Repositories\Todo\TodoRepository;
 use Illuminate\Support\Facades\DB;
-use Psy\Util\Str;
 
 class TodoService
 {
+    /** @var TodoRepository */
+    private $todoRepository;
+
+    /**
+     * TodoService constructor.
+     * @param TodoRepository $todoRepository
+     */
+    public function __construct(TodoRepository $todoRepository)
+    {
+        $this->todoRepository = $todoRepository;
+    }
+
     /**
      * TODO保存処理
      *
@@ -20,10 +31,7 @@ class TodoService
         try {
             DB::beginTransaction();
 
-            $todo = Todo::create(array_merge($inputs, [
-                'top' => 50,
-                'left' => 50
-            ]));
+            $todo = $this->todoRepository->create($inputs);
 
             DB::commit();
 
@@ -45,7 +53,7 @@ class TodoService
         try {
             DB::beginTransaction();
 
-            $todo->update($inputs);
+            $this->todoRepository->update($todo, $inputs);
 
             DB::commit();
         } catch (\Exception $e) {

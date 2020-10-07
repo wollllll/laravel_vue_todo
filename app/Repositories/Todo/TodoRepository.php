@@ -42,6 +42,32 @@ class TodoRepository implements TodoRepositoryInterface
     }
 
     /**
+     * TODO保存処理
+     *
+     * @param array $inputs
+     * @return Todo
+     */
+    public function create(array $inputs): Todo
+    {
+        return Todo::create(array_merge($inputs, [
+            'top' => 50,
+            'left' => 8
+        ]));
+    }
+
+    /**
+     * TODO更新処理
+     *
+     * @param Todo $todo
+     * @param array $inputs
+     * @return bool
+     */
+    public function update(Todo $todo, array $inputs)
+    {
+        return $todo->update($inputs);
+    }
+
+    /**
      * TODO削除処理
      *
      * @param Todo $todo
