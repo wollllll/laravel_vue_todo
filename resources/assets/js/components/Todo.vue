@@ -1,5 +1,9 @@
 <template>
-    <div class="card todo shadow-sm" @mouseup="getPosition">
+    <div
+        class="card todo shadow-sm"
+        @mouseup="getPosition"
+        @mousemove="getMovePosition"
+    >
         <p>{{ todo.content }}</p>
     </div>
 </template>
@@ -9,7 +13,8 @@ import api from "../api";
 
 export default {
     props: {
-        todo: Object
+        todo: Object,
+        trashBoxDom: HTMLDivElement
     },
     methods: {
         /**
@@ -25,6 +30,24 @@ export default {
                 .catch(() => {
                     console.log('fail');
                 });
+
+            this.collide(e);
+        },
+        collide(e) {
+            const rectA = this.trashBoxDom.getBoundingClientRect();
+            const rectB = e.target.getBoundingClientRect();
+
+            console.log(this.check(rectA, rectB));
+        },
+        getMovePosition(e) {
+            let trashBox = this.trashBoxDom.style;
+            const rectA = this.trashBoxDom.getBoundingClientRect();
+            const rectB = e.target.getBoundingClientRect();
+
+            this.check(rectA, rectB) ? trashBox.background = '#dc3545' : trashBox.background = '';
+        },
+        check(rectA, rectB) {
+            return rectB.top <= rectA.bottom && rectA.top <= rectB.bottom && rectB.left <= rectA.right && rectA.left <= rectB.right;
         }
     }
 }

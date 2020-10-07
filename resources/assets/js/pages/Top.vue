@@ -4,6 +4,7 @@
             v-for="todo in todos"
             :key="todo.id"
             :todo="todo"
+            :trashBoxDom="trashBoxDom"
             :id="`todo-${todo.id}`"
             class="draggable"
             :style="`top: ${todo.top}px; left: ${todo.left}px`"
@@ -11,7 +12,7 @@
         />
         <Search @search="setSearch"/>
         <Create @push-todo="pushTodo"/>
-        <Delete/>
+        <Delete id="trash-box"/>
     </Base>
 </template>
 
@@ -39,6 +40,7 @@ export default {
         return {
             todos: {},
             search: '',
+            trashBoxDom: HTMLDivElement,
             draggableValue: {
                 boundingRect: {
                     top: 0,
@@ -50,12 +52,13 @@ export default {
         }
     },
     created() {
-        this.initialUrl();
+        // this.initialUrl();
         this.getAll();
     },
     mounted() {
         this.getWidth();
         this.getHeight();
+        this.trashBoxDom = document.getElementById('trash-box');
     },
     watch: {
         search() {
