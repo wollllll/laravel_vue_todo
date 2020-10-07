@@ -5,7 +5,7 @@
             class="form-control"
             placeholder="検索"
             @keyup="search"
-        >
+        />
     </div>
 </template>
 

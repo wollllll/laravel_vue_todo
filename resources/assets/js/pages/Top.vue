@@ -122,9 +122,7 @@ export default {
          * @param targetTodo
          */
         filterDeleteTodo(targetTodo) {
-            this.todos = this.todos.filter(todo => {
-                return todo === targetTodo;
-            });
+            this.todos = this.todos.filter(todo => todo.id !== targetTodo.id);
         }
     }
 }
