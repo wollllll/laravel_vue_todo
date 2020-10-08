@@ -13,7 +13,9 @@
         />
         <Search @search="setSearch"/>
         <Create @push-todo="pushTodo"/>
-        <Delete id="trash-box"/>
+        <div id="trash-box" class="icon-trash">
+            <i class="fas fa-trash"></i>
+        </div>
     </Base>
 </template>
 
@@ -21,8 +23,7 @@
 import {Draggable} from 'draggable-vue-directive';
 import Base from "../components/layouts/Base";
 import Todo from "../components/Todo";
-import Create from "../components/todos/Create";
-import Delete from "../components/todos/Delete";
+import Create from "../components/CreateTodo";
 import Search from "../components/Search";
 import api from "../api";
 
@@ -34,7 +35,6 @@ export default {
         Base,
         Todo,
         Create,
-        Delete,
         Search
     },
     data() {
@@ -123,7 +123,26 @@ export default {
          */
         filterDeleteTodo(targetTodo) {
             this.todos = this.todos.filter(todo => todo.id !== targetTodo.id);
+
+            this.changeDefaultTrashBox();
+        },
+        changeDefaultTrashBox() {
+            this.trashBoxDom.style.background = '';
         }
     }
 }
 </script>
+
+<style lang="scss">
+.icon-trash {
+    border: 1px solid #dc3545;
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    width: 150px;
+    height: 150px;
+    font-size: 70px;
+    text-align: center;
+    line-height: 150px;
+}
+</style>
