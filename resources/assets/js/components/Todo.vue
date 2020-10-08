@@ -40,6 +40,8 @@ export default {
             const rectA = this.trashBoxDom.getBoundingClientRect();
             const rectB = e.target.getBoundingClientRect();
 
+            // todo delete処理はDeleteコンポーネントに移した方がいいかも
+
             /**
              * TODOがゴミ箱に重なったら削除処理実行
              */
