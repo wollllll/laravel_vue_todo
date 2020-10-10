@@ -147,6 +147,7 @@ export default {
     font-size: 70px;
     text-align: center;
     line-height: 150px;
-    color: #bbb;
+    color: #bbb
+;
 }
 </style>
