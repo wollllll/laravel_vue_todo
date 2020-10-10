@@ -126,6 +126,9 @@ export default {
 
             this.changeDefaultTrashBox();
         },
+        /**
+         * ゴミ箱をデフォルトの見た目にする
+         */
         changeDefaultTrashBox() {
             this.trashBoxDom.style.background = '';
         }
@@ -144,5 +147,6 @@ export default {
     font-size: 70px;
     text-align: center;
     line-height: 150px;
+    color: #bbb;
 }
 </style>
